@@ -12,15 +12,10 @@ class Uppercase implements ValidationRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function validate(string $attribute, mixed $value, Closure $fail)
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        return mb_substr($value, 0, 1) === mb_strtoupper(mb_substr($value, 0, 1));
-    }
-
-
-    public function message()
-    {
-        return 'The :attribute does not start with an uppercased letter.';
+        if (mb_substr(strtoupper($value), 0, 1) !== mb_substr($value, 0, 1)) {
+            $fail('The :attribute does not start with an uppercased letter');
+        }
     }
 }
-
