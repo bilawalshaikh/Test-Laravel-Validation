@@ -11,8 +11,11 @@ class UserController extends Controller
     {
         // TASK: change this line to not allow is_admin field to be updated
         // Update only the fields that are validated in UpdateUserRequest
-        $user->update($request->all());
-
+//         $user->update($request->except('is_admin'));
+           $validatedData = $request->validated();
+           unset($validatedData['is_admin']); // Remove 'is_admin' from the validated data
+           $user->update($validatedData);
+        
         return 'Success';
     }
 }
