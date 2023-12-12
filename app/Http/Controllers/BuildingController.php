@@ -21,4 +21,10 @@ class BuildingController extends Controller
 
         return 'Success';
     }
+
+    public function messages()
+    {
+        return ['name' => 'Please enter the name'];
+    }
+    
 }
