@@ -1,20 +1,13 @@
 {{-- Form without any design --}}
+
 {{-- TASK: add the validation errors here - with whatever HTML structure you want --}}
 {{-- in case of title/description empty, visitor should see --}}
 {{-- "The name field is required." and "The description field is required." --}}
-
-@if ($errors->any())
-<p>You have an error</p>
-<ul>
-    @foreach($errors->all() as $error)
-    <li>
-      {{  $error}}
-    </li>
-    @endforeach    
-</ul>
-@endif
-
-
+@foreach ($errors->all() as $message)
+    <div>
+        <span>{{$message}}</span>
+    </div>
+@endforeach
 
 <form method="POST" action="{{ route('projects.store') }}">
     @csrf
