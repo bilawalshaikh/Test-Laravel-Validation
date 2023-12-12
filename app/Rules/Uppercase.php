@@ -12,7 +12,7 @@ class Uppercase implements ValidationRule
      *
      * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
      */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    public function validate(string $attribute, mixed $value, Closure $fail)
     {
         return mb_substr($value, 0, 1) === mb_strtoupper(mb_substr($value, 0, 1));
     }
