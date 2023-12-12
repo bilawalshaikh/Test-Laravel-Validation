@@ -1,6 +1,9 @@
 <?php
+
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 class ProfileController extends Controller
 {
     public function update(Request $request)
@@ -10,11 +13,14 @@ class ProfileController extends Controller
             // <input name="profile[name]" ... />
             // <input name="profile[email]" ... />
             // Write validation rules, so both name and email are required
-            'profile.name'  =>  'required',
-            'profile.email' =>  'required'
+            'profile' => [
+                'name' => 'required',
+                'email' => 'required',
+            ],
         ]);
 
         auth()->user()->update($request->profile ?? []);
+
         return 'Success';
     }
 }
