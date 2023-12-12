@@ -1,9 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 class ProfileController extends Controller
 {
     public function update(Request $request)
@@ -18,7 +15,6 @@ class ProfileController extends Controller
         ]);
 
         auth()->user()->update($request->profile ?? []);
-
         return 'Success';
     }
 }
